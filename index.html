@@ -77,7 +77,7 @@
         <!-- ******************tercer práctica******************* -->
         <h3>{{ titulo }}<h3>
 
-                <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
+                <!-- <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
                 <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
 
                 <div v-bind:class="['alert', tarea.estado ? 'alert-info' : 'alert-danger']"
@@ -92,7 +92,24 @@
                             <button class="btn btn-warning btn-sm" @click="eliminar(index)">X</button>
                         </div>
                     </div>
+                </div> -->
+
+                <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
+                <button @click="agregarTarea" class="btn btn-primary">Agregar Tarea</button>
+
+                <div v-bind:class="['alert', item.estado ? 'alert-success' : 'alert-danger']"
+                    class="alert alert-info my-4" role="alert" v-for="(item, index) of tareas">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            {{ index }} - {{ item.nombre }} - {{ item.estado }}
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-danger">X</button>
+                            <button class="btn btn-sm btn-warning" @click="cambiarEstado(index)">OK</button>
+                        </div>
+                    </div>
                 </div>
+
 
                 <!-- ******************/tercer práctica******************* -->
 
@@ -100,7 +117,7 @@
 
     <!-- scripts de VUE y mios -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/crud-localstorage.js" type="text/javascript"></script>
+    <script src="js/crud-practica.js" type="text/javascript"></script>
 </body>
 
 </html>
