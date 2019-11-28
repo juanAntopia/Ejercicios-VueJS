@@ -75,7 +75,7 @@
         ******************/Segunda práctica******************* -->
 
         <!-- ******************tercer práctica******************* -->
-        <h3>{{ titulo }}<h3>
+        <!-- <h3>{{ titulo }}<h3> -->
 
                 <!-- <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
                 <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
@@ -94,7 +94,7 @@
                     </div>
                 </div> -->
 
-                <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
+                <!-- <input type="text" class="form-control my-3" v-model="nuevaTarea" @keyup.enter="agregarTarea">
                 <button @click="agregarTarea" class="btn btn-primary">Agregar Tarea</button>
 
                 <div v-bind:class="['alert', item.estado ? 'alert-success' : 'alert-danger']"
@@ -104,20 +104,41 @@
                             {{ index }} - {{ item.nombre }} - {{ item.estado }}
                         </div>
                         <div>
-                            <button class="btn btn-sm btn-danger">X</button>
+                            <button class="btn btn-sm btn-danger" @click="eliminarTarea(index)">X</button>
                             <button class="btn btn-sm btn-warning" @click="cambiarEstado(index)">OK</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
 
                 <!-- ******************/tercer práctica******************* -->
+
+
+                <!-- ******************cuarta práctica******************* -->
+
+                <h1>{{ mensaje }}</h1>
+                <h2>invertido: {{ invertido }}</h2>
+
+                <input type="text" v-model="mensaje" class="form-control">
+
+                <hr>
+
+                <h1>{{ contador }}</h1>
+
+                <button class="btn btn-success" @click="contador++">+</button>
+                <button class="btn btn-danger" @click="contador--">-</button>
+
+                <div class="progress mt-3">
+                    <div class="progress-bar" v-bind:class="color" role="progressbar" :style="{'width' : contador+'%'}" aria-valuenow="25" aria-valuemin="0"
+                        aria-valuemax="100">{{ contador }}%</div>
+                </div>
+                <!-- ******************/cuarta práctica******************* -->
 
     </div>
 
     <!-- scripts de VUE y mios -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/crud-practica.js" type="text/javascript"></script>
+    <script src="js/ejercicio3.js" type="text/javascript"></script>
 </body>
 
 </html>

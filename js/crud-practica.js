@@ -22,6 +22,9 @@ const app = new Vue({
         cambiarEstado: function (index) {
             this.tareas[index].estado = true
             this.setearItem();
+        },
+        eliminarTarea: function (index) {
+            this.tareas.splice(index, 1);
         }
 
     },
