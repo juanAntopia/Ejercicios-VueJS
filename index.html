@@ -114,7 +114,7 @@
                 <!-- ******************/tercer práctica******************* -->
 
 
-                <!-- ******************cuarta práctica******************* -->
+                <!-- ******************cuarta práctica******************* 
 
                 <h1>{{ mensaje }}</h1>
                 <h2>invertido: {{ invertido }}</h2>
@@ -132,13 +132,35 @@
                     <div class="progress-bar" v-bind:class="color" role="progressbar" :style="{'width' : contador+'%'}" aria-valuenow="25" aria-valuemin="0"
                         aria-valuemax="100">{{ contador }}%</div>
                 </div>
-                <!-- ******************/cuarta práctica******************* -->
+                ******************/cuarta práctica******************* -->
 
+                <!-- *************quinta práctica***************************** 
+
+                <h3>{{ saludo }}</h3>
+
+                <button @click="saludo = 'saludo cambiado'">Cambiar</button>
+                <button @click="destruir()">Destruir</button>
+
+                *************/quinta práctica***************************** -->
+
+
+                <!-- *************sexta práctica***************************** -->
+                <saludo></saludo>
+                <contador></contador>
+                <!--*************/sexta práctica***************************** -->
     </div>
+    
 
     <!-- scripts de VUE y mios -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="js/ejercicio3.js" type="text/javascript"></script>
+    <!-- <script src="js/ejercicio5.js" type="text/javascript"></script> -->
+    <script src="componentes/saludo.js"></script>
+    <script src="componentes/contador.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+        })
+    </script>
 </body>
 
 </html>
