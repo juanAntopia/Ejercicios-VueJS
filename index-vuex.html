@@ -14,37 +14,67 @@
 
     <div id="app">
         <titulo></titulo>
-        
+
     </div>
 
     <script>
         Vue.component('titulo', {
             template: //html
-            `  
+                `  
                 <div>
-                    <h1>numero {{ $store.state.numero }}</h1>
+                    <h1>numero {{ numero}}</h1>
                     <hijo></hijo>
                 </div>
-            `
+            `,
+            computed: {
+                ...Vuex.mapState(['numero'])
+            }
         })
 
         Vue.component('hijo', {
             template: //html
-            `
+                `
                 <div>
-                    <button @click="$store.commit('aumentar')">+</button>
-                     <h1>numero {{ $store.state.numero }}</h1>
+                    <button @click="ObtenerCursos">Mostrar cursos</button>
+                    <button @click="aumentar(10)">+</button>
+                    <button @click="disminuir(2)">-</button>
+                     <h1>numero {{ numero }}</h1>
+
+                    <ul v-for="item of cursos">
+                        <li>{{ item.name }} - {{ item.id }}</li>
+                    </ul>
                 </div>
-            `
+            `,
+            computed: {
+                ...Vuex.mapState(['numero', 'cursos'])
+            },
+            methods: {
+                ...Vuex.mapMutations(['aumentar', 'disminuir']),
+                ...Vuex.mapActions(['ObtenerCursos'])
+            }
         })
 
         const store = new Vuex.Store({
             state: {
-                numero: 10
+                numero: 10,
+                cursos: []
             },
             mutations: {
-                aumentar(state){
-                    state.numero++
+                aumentar(state, n) {
+                    state.numero += n
+                },
+                disminuir(state, n) {
+                    state.numero -= n
+                },
+                llenarCursos(state, cursosAccion){
+                    state.cursos = cursosAccion
+                }
+            },
+            actions:{
+                ObtenerCursos: async function({commit}){
+                   const data = await fetch('cursos.json');
+                   const cursos = await data.json();
+                   commit('llenarCursos', cursos);
                 }
             }
         })
